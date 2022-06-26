@@ -9,10 +9,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_cliente: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:'tb_usuarios',
+          key:'id'
+        }
       },
       id_produto: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:'tb_anuncios',
+          key:'id'
+        }
       },
       avaliacao: {
         type: Sequelize.FLOAT
