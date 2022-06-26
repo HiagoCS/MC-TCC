@@ -18,23 +18,15 @@ module.exports = {
       id_produto: {
         type: Sequelize.INTEGER,
         references:{
-          model:'tb_anuncio',
+          model:'tb_anuncios',
           key:'id'
         }
       },
       nm_produto: {
-        type: Sequelize.STRING,
-        references:{
-          model:'tb_anuncio',
-          key:'nome'
-        }
+        type: Sequelize.STRING
       },
       vl_produto: {
-        type: Sequelize.FLOAT,
-        references:{
-          model:'tb_anuncio',
-          key:'custo'
-        }
+        type: Sequelize.FLOAT
       },
       qt_produto: {
         type: Sequelize.INTEGER
