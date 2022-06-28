@@ -35,4 +35,24 @@
 			}
 		}
 	}
+
+	function logarUsuario($email, $senha){
+		$query = "SELECT * FROM tb_usuarios WHERE email = '$email' && senha = '$senha'";
+		$return = $GLOBALS['conn']->query($query);
+		if($return->num_rows == 1){
+			$usuario = mysqli_fetch_assoc($return);
+			if($usuario['status'] != 1){
+				echo "Usuario existe porém não foi verificado!";
+			}
+			else{
+				echo "Usuario logado!";
+			}
+		}
+		else if($return->num_rows == 0){
+			echo "Informações de Login inválidas!";
+		}
+		else{
+			echo "Multiplos usuários!";
+		}
+	}
 ?>
