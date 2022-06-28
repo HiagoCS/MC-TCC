@@ -11,4 +11,28 @@
 	if ($conn->connect_error) {
  	 die("Connection failed: " . $conn->connect_error);
 	}
+
+	function inserirUsuario($nome, $email, $telefone, $senha, $status, $cpf, $cep, $id_servico, $nivel){
+		$query = "SELECT * FROM tb_usuarios WHERE email = '$email'";
+		$return = $GLOBALS['conn']->query($query);
+		if($return->num_rows == 0){
+			$dataAtual = new DateTime();
+			$query = "INSERT INTO tb_usuarios VALUES (null, '$nome', '$email', '$telefone', '$senha', '$status', '$cpf', '$cep', $id_servico, $nivel, '".$dataAtual->format('Y-m-d H:i:s')."', '".$dataAtual->format('Y-m-d H:i:s')."')";
+			if($GLOBALS['conn']->query($query)){
+				echo "Usuario Inserido";
+			}
+			else{
+				echo "Error!!";
+			}
+		}
+		else if($return->num_rows == 1){
+			$usuario = mysqli_fetch_assoc($return);
+			if($usuario['status'] != 1){
+				echo "Usuario já existente porém não verificado!";
+			}
+			else{
+				echo "Usuario já existente e verificado!";
+			}
+		}
+	}
 ?>
