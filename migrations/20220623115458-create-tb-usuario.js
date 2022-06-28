@@ -29,10 +29,10 @@ module.exports = {
       cep: {
         type: Sequelize.STRING
       },
-      id_categoria: {
+      id_servico: {
         type: Sequelize.INTEGER,
         references:{
-          model:'tb_categoria',
+          model:'tb_servico',
           key:'id'
         }
       },
